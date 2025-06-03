@@ -1,14 +1,14 @@
 {
-  // 明确告诉 Vercel：这是一个 Vite 项目
-  "framework": "vite",
-
-  // Vercel 在云端构建时要执行的脚本：打包到 dist/md
-  "buildCommand": "npm run build",
-
-  // 构建完成后，输出目录是 dist/md
-  "outputDirectory": "dist/md",
-
-  // 因为打包时所有资源都在 dist/md 下，需要把访问 /md/... 的请求都重定向到 dist/md/index.html
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/md"
+      }
+    }
+  ],
   "routes": [
     {
       "src": "/md/(.*)",
